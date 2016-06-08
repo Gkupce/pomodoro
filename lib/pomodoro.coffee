@@ -5,24 +5,30 @@ PomodoroView = require './pomodoro-view'
 module.exports =
   config:
     period:
-      type: "integer"
-      default: 25
+    	type: "integer"
+    	default: 25
+	# restPeriod:
+	# 	type: "integer"
+	# 	default: 5
     pathToExecuteWithTimerStart:
-      type: "string"
-      default: ""
+    	type: "string"
+    	default: ""
     pathToExecuteWithTimerAbort:
-      type: "string"
-      default: ""
+    	type: "string"
+    	default: ""
     pathToExecuteWithTimerFinish:
-      type: "string"
-      default: ""
+    	type: "string"
+    	default: ""
     playSounds:
-      type: "boolean"
-      default: true
-
+    	type: "boolean"
+    	default: true
+	loopStartSound:
+		type: "boolean"
+    	default: false
+		
   activate: ->
     atom.commands.add "atom-workspace",
-      "pomodoro:start": =>  @start(),
+      "pomodoro:start": => @start(),
       "pomodoro:abort": => @abort()
 
     @timer = new PomodoroTimer()
