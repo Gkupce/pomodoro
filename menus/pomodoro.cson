@@ -1,13 +1,13 @@
 'menu': [
-  {
-    'label': 'Packages'
-    'submenu': [
-      'label': 'Pomodoro'
-      'submenu': [
-		  { 'label': 'Abort', 'command': 'pomodoro:abort' }
-        { 'label': 'Start', 'command': 'pomodoro:manualStart' }
-		{ 'label': 'Start rest', 'command': 'pomodoro:manualStartRest' }
-      ]
-    ]
-  }
+	{
+		'label': 'Packages'
+		'submenu': [
+			'label': 'Pomodoro'
+			'submenu': [
+				{ 'label': 'Abort', 'command': 'pomodoro:abort' }
+				{ 'label': 'Start', 'command': 'pomodoro:manualStart' }
+				{ 'label': 'Start rest', 'command': 'pomodoro:manualStartRest' }
+			]
+		]
+	}
 ]
