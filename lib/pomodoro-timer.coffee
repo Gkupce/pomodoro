@@ -7,20 +7,32 @@ class PomodoroTimer extends events.EventEmitter
 		@ticktack = new Audio(require("../resources/ticktack").data())
 		@bell = new Audio(require("../resources/bell").data())
 		@ticktack.loop = atom.config.get("pomodoro.loopStartSound")
-
-	start: ->
+	
+	manualStart: ->
+		if @timer?
+			@stop()
 		if atom.config.get("pomodoro.playSounds")
 			@ticktack.play()
+		@start()
+	
+	manualStartRest: ->
+		if @timer?
+			@stop()
+		if atom.config.get("pomodoro.playSounds")
+			@ticktack.play()
+		@startRest()
+	
+	start: ->
 		@startTime = new Date()
 		@minutes = atom.config.get("pomodoro.period")
+		@isRest = false
 		@timer = setInterval ( => @step() ), 1000
 	
-	# startRest: ->
-	#	 if atom.config.get("pomodoro.playSounds")
-	#		 @ticktack.play()
-	#	 @startTime = new Date()
-	#	 @minutes = atom.config.get("pomodoro.restPeriod")
-	#	 @timer = setInterval ( => @step() ), 1000
+	startRest: ->
+		@startTime = new Date()
+		@minutes = atom.config.get("pomodoro.restPeriod")
+		@isRest = true
+		@timer = setInterval ( => @step() ), 1000
 	
 	abort: ->
 		@status = "aborted (#{new Date().toLocaleString()})"
@@ -34,6 +46,11 @@ class PomodoroTimer extends events.EventEmitter
 		@stop()
 		if atom.config.get("pomodoro.playSounds")
 			@bell.play()
+		if atom.config.get("pomodoro.LoopPomodoroRest")
+			if @isRest
+				@start()
+			else
+				@startRest()
 
 	stop: ->
 		if(@ticktack.loop)

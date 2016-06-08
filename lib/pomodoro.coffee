@@ -7,9 +7,9 @@ module.exports =
 		period:
 			type: "integer"
 			default: 25
-		# restPeriod:
-		# 	type: "integer"
-		# 	default: 5
+		restPeriod:
+			type: "integer"
+			default: 5
 		pathToExecuteWithTimerStart:
 			type: "string"
 			default: ""
@@ -19,6 +19,9 @@ module.exports =
 		pathToExecuteWithTimerFinish:
 			type: "string"
 			default: ""
+		LoopPomodoroRest:
+			type: "boolean"
+			default: true
 		playSounds:
 			type: "boolean"
 			default: true

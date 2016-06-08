@@ -2,10 +2,11 @@
   {
     'label': 'Packages'
     'submenu': [
-      'label': 'pomodoro'
+      'label': 'Pomodoro'
       'submenu': [
-        { 'label': 'start', 'command': 'pomodoro:start' }
-        { 'label': 'abort', 'command': 'pomodoro:abort' }
+		  { 'label': 'Abort', 'command': 'pomodoro:abort' }
+        { 'label': 'Start', 'command': 'pomodoro:manualStart' }
+		{ 'label': 'Start rest', 'command': 'pomodoro:manualStartRest' }
       ]
     ]
   }
