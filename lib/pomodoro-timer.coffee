@@ -36,7 +36,7 @@ class PomodoroTimer extends events.EventEmitter
 			@bell.play()
 
 	stop: ->
-	if(@ticktack.loop)
+		if(@ticktack.loop)
 			@ticktack.pause()
 		clearTimeout @timer
 		@updateCallback(@status)
