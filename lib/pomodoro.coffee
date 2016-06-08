@@ -24,7 +24,7 @@ module.exports =
 	    	default: true
 		loopStartSound:
 			type: "boolean"
-	    	default: false
+			default: false
 	
 	activate: ->
     	atom.commands.add "atom-workspace",
