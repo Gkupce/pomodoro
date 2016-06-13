@@ -5,8 +5,9 @@
   "description": "Simple pomodoro timer",
   "activationCommands": {
     "atom-workspace": [
-      "pomodoro:start",
-      "pomodoro:abort"
+      "pomodoro:manualStart",
+      "pomodoro:abort",
+      "pomodoro:manualStartRest"
     ]
   },
   "repository": "https://github.com/Gkupce/pomodoro",
@@ -23,5 +24,10 @@
         "^1.0.0": "consumeStatusBar"
       }
     }
+  },
+  "apmInstallSource": {
+    "type": "git",
+    "source": "https://github.com/Gkupce/pomodoro.git",
+    "sha": "cf8d64622af9a27ffe68a2d5a8c684bf911241e8"
   }
 }

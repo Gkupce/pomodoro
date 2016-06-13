@@ -31,20 +31,26 @@ module.exports =
 	
 	activate: ->
 		atom.commands.add "atom-workspace",
-			"pomodoro:start": => @start(),
-			"pomodoro:abort": => @abort()
-
-			@timer = new PomodoroTimer()
-			@timer.on 'finished', => @finish()
+			"pomodoro:start": => @manualStart(),
+			"pomodoro:abort": => @abort(),
+			"pomodoro:manualStartRest": => @manualStartRest()
+			
+		@timer = new PomodoroTimer()
+		@timer.on 'finished', => @finish()
 
 	consumeStatusBar: (statusBar) ->
 		@view = new PomodoroView(@timer)
 		statusBar.addRightTile(item: @view, priority: 200)
 
-	start: ->
+	manualStart: ->
 		console.log "pomodoro: start"
-		@timer.start()
+		@timer.manualStart()
 		@exec atom.config.get("pomodoro.pathToExecuteWithTimerStart")
+
+	manualStartRest: ->
+		console.log "pomodoro: start rest"
+		@timer.manualStartRest()
+		# TODO pathToExecuteWithRestStart?
 
 	abort: ->
 		console.log "pomodoro: abort"

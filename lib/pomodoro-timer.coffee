@@ -35,8 +35,9 @@ class PomodoroTimer extends events.EventEmitter
 		@timer = setInterval ( => @step() ), 1000
 	
 	abort: ->
-		@status = "aborted (#{new Date().toLocaleString()})"
-		@stop()
+		if @timer?
+			@status = "aborted (#{new Date().toLocaleString()})"
+			@stop()
 
 	time: ->
 		@minutes * 60 * 1000
